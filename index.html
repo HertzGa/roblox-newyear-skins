@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050a15">
+<title>Новогодний пак скинов — Roblox</title>
+<meta name="description" content="Шесть новогодних скинов для Roblox и сцена с санями: палитры, поисковые запросы, скрипт сборки в Studio.">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+<canvas id="scene" aria-label="3D-витрина новогодних скинов"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="brand" href="index.html">
+    <span class="mark" aria-hidden="true">❄</span>
+    <span><b>Новогодний пак</b><small>Roblox · 6 скинов + сани</small></span>
+  </a>
+  <div class="top-actions">
+    <button id="how" class="btn" type="button">Как собрать</button>
+    <a class="btn ghost" href="skins.json" download>JSON</a>
+  </div>
+</header>
+
+<aside id="card" class="panel" aria-live="polite"></aside>
+
+<div class="tools panel" aria-label="Настройки сцены">
+  <button id="spin" class="tool is-on" type="button" aria-pressed="true" title="Автоповорот">⟳<span>Поворот</span></button>
+  <button id="snowbtn" class="tool is-on" type="button" aria-pressed="true" title="Снег">❄<span>Снег</span></button>
+</div>
+
+<nav id="chips" class="chips" aria-label="Скины пака"></nav>
+
+<div class="hint" aria-hidden="true">вращение — ЛКМ · зум — колесо · ← → — скины</div>
+<div id="toast" class="toast" role="status"></div>
+<div id="loading" class="loading"><span aria-hidden="true">❄</span> Собираем сцену…</div>
+
+<dialog id="modal" class="modal">
+  <button class="modal-x" id="modalClose" type="button" aria-label="Закрыть">✕</button>
+  <div id="modalBody"></div>
+</dialog>
+
+<div id="fallback" class="fallback" hidden>
+  <div>
+    <h2>WebGL недоступен</h2>
+    <p>Открой страницу в Chrome, Edge или Firefox и включи аппаратное ускорение.</p>
+  </div>
+</div>
+
+<noscript>
+  <div class="fallback"><div><h2>Нужен JavaScript</h2><p>Без него 3D-витрина не запустится. Палитры и инструкции лежат в README.md.</p></div></div>
+</noscript>
+
+<script>
+  if (location.protocol === 'file:') {
+    var loading = document.getElementById('loading');
+    if (loading) {
+      loading.innerHTML = 'Для запуска модулей нужен локальный сервер:<br><code>npx serve .</code><br>и открой <b>http://localhost:3000/roblox-newyear-skins/</b>';
+      loading.classList.add('is-error');
+    }
+  }
+</script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
